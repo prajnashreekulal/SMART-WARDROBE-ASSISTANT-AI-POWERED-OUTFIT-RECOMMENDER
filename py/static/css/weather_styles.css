@@ -1,0 +1,322 @@
+/* Weather Recommendation Styles - IMPROVED DESKTOP UI */
+
+.auto-recommendation-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+}
+
+.weather-info-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.weather-card {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.weather-card h3 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card p {
+    font-size: 1.3em;
+    margin: 12px 0;
+    opacity: 0.95;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.weather-detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recommendations-container h2,
+.recommendations-container h3 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2em;
+    border-bottom: 4px solid #667eea;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+/* Complete outfit card - IMPROVED FOR DESKTOP */
+.outfit-complete-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 35px;
+    margin: 30px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.outfit-complete-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.outfit-complete-card h4 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    text-align: center;
+    font-weight: 600;
+}
+
+.outfit-description {
+    color: #666;
+    margin-bottom: 30px;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Outfit items - HORIZONTAL LAYOUT FOR DESKTOP */
+.outfit-items {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.outfit-item {
+    flex: 0 1 300px;
+    text-align: center;
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.outfit-item:hover {
+    background: #f0f0f0;
+    transform: translateY(-5px);
+}
+
+.outfit-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #e0e0e0;
+    transition: transform 0.3s, border-color 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.outfit-item img:hover {
+    transform: scale(1.05);
+    border-color: #667eea;
+}
+
+.item-label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.item-type {
+    display: block;
+    color: #999;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Mark as worn button - IMPROVED */
+.mark-worn-btn {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.mark-worn-btn:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.mark-worn-btn:active {
+    transform: translateY(0);
+}
+
+/* Horizontal grid for occasion outfits - SIDE BY SIDE */
+.outfits-grid-horizontal {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.outfit-display {
+    margin: 30px 0;
+}
+
+/* Section headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-header h3 {
+    margin: 0;
+    border: none;
+}
+
+.section-icon {
+    font-size: 2em;
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .auto-recommendation-section {
+        padding: 30px;
+    }
+    
+    .outfit-items {
+        gap: 20px;
+    }
+    
+    .outfit-item {
+        flex: 0 1 250px;
+    }
+    
+    .outfit-item img {
+        height: 240px;
+    }
+    
+    .outfits-grid-horizontal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .auto-recommendation-section {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .weather-card h3 {
+        font-size: 2em;
+    }
+    
+    .weather-card p {
+        font-size: 1em;
+    }
+    
+    .weather-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .outfit-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .outfit-item {
+        flex: 1;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .outfit-item img {
+        height: 220px;
+    }
+    
+    .outfit-complete-card {
+        padding: 20px;
+    }
+    
+    .outfit-complete-card h4 {
+        font-size: 1.4em;
+    }
+    
+    .mark-worn-btn {
+        font-size: 1em;
+        padding: 14px 20px;
+    }
+    
+    .recommendations-container h2,
+    .recommendations-container h3 {
+        font-size: 1.5em;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .outfit-item img {
+        height: 180px;
+    }
+    
+    .item-label {
+        font-size: 0.9em;
+    }
+}
+
+/* Large screens - WIDER LAYOUT */
+@media (min-width: 1600px) {
+    .auto-recommendation-section {
+        max-width: 1600px;
+    }
+    
+    .outfit-item {
+        flex: 0 1 350px;
+    }
+    
+    .outfit-item img {
+        height: 320px;
+    }
+}
