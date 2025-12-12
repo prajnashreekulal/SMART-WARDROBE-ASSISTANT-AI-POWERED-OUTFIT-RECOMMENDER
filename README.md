@@ -1,341 +1,238 @@
-# 👗 Smart Wardrobe Assistant
 
-An **AI-powered outfit recommendation system** built with **Flask + TensorFlow**, designed to intelligently classify clothing items and suggest perfect outfit combinations based on season, occasion, and wear frequency. Features a sophisticated wardrobe management system with wear tracking to balance your wardrobe usage.
+# 👗 **SMART WARDROBE ASSISTANT — AI-POWERED OUTFIT RECOMMENDER**
 
-## 🌟 Features
+An **AI-powered Smart Wardrobe System** built using **Python, Flask, and Machine Learning (CNN)** that digitizes your wardrobe, classifies clothing using image recognition, and recommends the perfect outfit based on **occasion, weather, personal preferences, and usage frequency**.
 
-### 🎯 Core Features
-
-- ✅ **User Authentication** - Secure login/register with SQLite database
-- ✅ **AI Clothing Classification** - TensorFlow models classify items (tops/bottoms/shoes)
-- ✅ **Smart Wardrobe Management** - Upload, organize, and manage your clothes
-- ✅ **Intelligent Recommendations** - AI-powered outfit suggestions by season & occasion
-- ✅ **Manual Tag Editing** - Fix/update season and occasion for any item
-
-### 🚀 Advanced Features
-
-- ✅ **Wear Count Tracking** - Track how many times each item is worn
-- ✅ **Balanced Recommendations** - System prioritizes less-worn items automatically
-- ✅ **Outfit History** - Complete history of all worn outfits
-- ✅ **Wardrobe Statistics** - Visual dashboard with most/least worn items
-- ✅ **Color-Coded Wear Badges** - Easy identification of item usage patterns
-- ✅ **Responsive UI** - Beautiful, modern interface for desktop and mobile
-- ✅ **One-Click Outfit Marking** - Mark outfits as worn to update statistics
+This project functions as a **personal AI stylist**, helping users simplify outfit decisions, reduce fashion waste, and manage their wardrobe intelligently.
 
 ---
 
-## ⚙️ Tech Stack
+## 🌟 **INTRODUCTION**
 
-| Component              | Technology              |
-| ---------------------- | ----------------------- |
-| **Backend**            | Flask 2.0+              |
-| **ML Framework**       | TensorFlow / Keras      |
-| **Database**           | SQLite3                 |
-| **Image Processing**   | OpenCV, PIL, NumPy      |
-| **Frontend**           | HTML5, CSS3, JavaScript |
-| **Data Visualization** | Matplotlib, NumPy       |
+Choosing an outfit can be surprisingly stressful due to the overwhelming number of choices. The Smart Wardrobe Assistant solves this by:
 
----
+* Digitizing the user's wardrobe
+* Automatically classifying clothes using Machine Learning
+* Recommending outfits based on weather, occasion, and style
+* Tracking usage to reduce wardrobe neglect and promote sustainability
 
-## 📋 Requirements
-
-Python 3.10+
-pip (Python package manager)
-Virtual Environment (recommended)
+It analyzes **color coordination, category matching, seasonal suitability**, and more — making fashion smarter, easier, and organized.
 
 ---
 
-## 🧩 Installation & Setup
+## 🚩 **PROBLEM STATEMENT**
 
-### **Step 1: Clone the Repository**
+People struggle daily with:
 
-git clone https://github.com/Jnaneshp/outfit-recommender.git
-cd Smart-Wardrobe-Assistant
+* Decision fatigue while choosing clothes
+* Overbuying due to poor wardrobe visibility
+* Underutilized clothing items
+* No personalized fashion guidance
+* Dressing incorrectly for the weather or event
 
-### **Step 2: Create Virtual Environment** (use python 10.13)
+This smart system provides **AI-powered outfit selection**, reducing stress and encouraging sustainable, data-driven fashion choices.
 
-Windows
+---
+
+## 🧠 **ML & AI FEATURES IMPLEMENTED**
+
+This version of the Smart Wardrobe Assistant includes:
+
+### 🤖 **AI Clothing Classification Using CNN**
+
+* Predicts **top / bottom / footwear / accessory**
+* Predicts **occasion category** (formal / casual / party / ethnic)
+* Predicts **color & pattern**
+* Predicts **subtype** (t-shirt, shirt, kurti, jeans, skirt, shoes, etc.)
+
+### 🎯 **AI-Powered Recommendations**
+
+* Suggests outfits based on:
+
+  * Weather (temp, humidity, condition)
+  * Occasion type (casual, formal, party, ethnic)
+  * Color compatibility
+  * Balanced usage (least worn items suggested first)
+
+### 🔄 **Wear Count Tracking**
+
+* Tracks how many times each item was worn
+* Recommender prioritizes underused items
+* Promotes sustainable fashion
+
+---
+
+## 🧥 **SMART WARDROBE MANAGEMENT**
+
+Users can:
+
+* Upload clothing images
+* Automatically classify type, color, and occasion
+* Edit tags manually if needed
+* Store items in digital wardrobe
+* Delete or modify wardrobe items
+* View wardrobe analytics & insights
+
+---
+
+## ☁️ **WEATHER-INTEGRATED RECOMMENDATIONS**
+
+System fetches real-time weather and suggests:
+
+* Light outfits for hot weather
+* Layered outfits for cold weather
+* Waterproof items for rainy season
+
+(Weather API integrated for accuracy.)
+
+---
+
+## 🔐 **AUTHENTICATION & USER SYSTEM**
+
+* User registration & login
+* Session-based authentication
+* User-specific wardrobe storage
+* Secure image upload handling
+
+---
+
+# ⚙️ **TECH STACK USED**
+
+| Component            | Technology                     |
+| -------------------- | ------------------------------ |
+| **Frontend**         | HTML, CSS, JavaScript          |
+| **Backend**          | Python + Flask                 |
+| **Machine Learning** | TensorFlow / Keras, CNN models |
+| **Image Processing** | OpenCV, NumPy, PIL             |
+| **Database**         | SQLite                         |
+| **API**              | Weather API                    |
+| **Deployment Ready** | Render / Railway compatible    |
+
+---
+
+# 📚 **METHODOLOGY**
+
+1. **Requirement analysis**
+2. **Data collection** (user-uploaded clothing images)
+3. **Image preprocessing**
+4. **Training CNN for clothing classification**
+5. **Developing Flask application**
+6. **Integrating ML with backend**
+7. **Database creation (SQLite)**
+8. **Weather API integration**
+9. **Testing & refinement**
+10. **Deployment**
+
+---
+
+# 🗂️ **PROJECT STRUCTURE**
+
+```
+SMART-WARDROBE-ASSISTANT/
+│── app.py
+│── requirements.txt
+│── .gitignore
+│── model/
+│   ├── saved_model.pb
+│   ├── variables/
+│   └── training.py
+│── static/
+│   ├── css/
+│   ├── js/
+│   ├── uploads/ (ignored in Git)
+│── templates/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── wardrobe.html
+│   ├── recommend.html
+│── db_setup.py
+│── weather_service.py
+│── recognition_module.py
+│── pycache/ (ignored)
+│── venv/ (ignored)
+```
+
+---
+
+# 🚀 **HOW TO RUN THE PROJECT**
+
+### **1️⃣ Clone Repo**
+
+```
+git clone https://github.com/prajnashreekulal/SMART-WARDROBE-ASSISTANT-AI-POWERED-OUTFIT-RECOMMENDER.git
+cd SMART-WARDROBE-ASSISTANT-AI-POWERED-OUTFIT-RECOMMENDER
+```
+
+### **2️⃣ Create virtual environment**
+
+```
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate      # Windows
+source venv/bin/activate  # Mac/Linux
+```
 
-Mac/Linux
-python3 -m venv venv
-source venv/bin/activate
+### **3️⃣ Install dependencies**
 
-### **Step 3: Install Dependencies**
-
+```
 pip install -r requirements.txt
+```
 
-### **Step 4: Set Up Database**
+### **4️⃣ Initialize database**
 
-cd py
+```
 python db_setup.py
+```
 
-This will create and initialize all required database tables.
+### **5️⃣ Run Flask**
 
-### **Step 5: Ensure Model Files Exist**
-
-Place your trained TensorFlow models in the `models/` folder:
-models/
-├── model_top/ # Top classification model
-├── model_bottom/ # Bottom classification model
-├── model_sub/ # Subtype classification model
-└── model_shoes/ # Shoes classification model
-
-### **Step 6: Run the Flask App**
-
+```
 python app.py
+```
 
-Visit: [**http://127.0.0.1:5000/**](http://127.0.0.1:5000/)
+### Open in browser:
 
----
-
-## 📁 Project Structure
-
-Smart-Wardrobe-Assistant/
-│
-├── venv/ # Virtual environment (in .gitignore)
-│
-├── requirements.txt # Project dependencies
-├── .gitignore # Git ignore rules
-├── README.md # This file
-├── LICENSE # MIT License
-│
-├── models/ # Pre-trained ML models
-│ ├── model_sub/
-│ ├── model_top/
-│ ├── model_bottom/
-│ └── model_shoes/
-│
-├── data/ # Training data and samples
-│
-├── pictures/ # Demo images
-│ ├── tutorial.png
-│ ├── screenshot.png
-│ └── demo/
-│
-├── py/ # Main Flask application
-│ ├── app.py # Flask entry point (main app)
-│ ├── recognition_module.py # ML prediction logic
-│ ├── db_setup.py # Database initialization
-│ ├── wardrobe.db # SQLite database (generated)
-│ │
-│ ├── templates/ # HTML templates
-│ │ ├── index.html # Home page
-│ │ ├── login.html # Login page
-│ │ ├── register.html # Registration page
-│ │ ├── recommend.html # Outfit recommendations
-│ │ ├── wardrobe.html # Wardrobe management
-│ │ └── outfit_history.html # Wear history (future)
-│ │
-│ ├── static/ # Static files
-│ │ ├── style.css # Main stylesheet
-│ │ ├── uploads/ # User uploaded images
-│ │ │ └── [user_id]/ # User-specific uploads
-│ │ └── temp/ # Temporary files
-│ │
-│ └── pycache/ # Python cache (in .gitignore)
-│
-└── documentation/ # Additional docs
-├── SETUP.md # Detailed setup guide
-├── FEATURES.md # Feature documentation
-└── API.md # API endpoints reference
+👉 [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 ---
 
-## 🚀 Quick Start Guide
+# 📊 **OUTCOMES**
 
-### 1. **Register & Login**
-
-Visit http://127.0.0.1:5000/
-Create account → Login
-
-### 2. **Upload Clothes**
-
-Go to Home page
-Upload clothing images
-System automatically classifies them
-
-### 3. **View Wardrobe**
-
-Go to "My Wardrobe"
-See all items with season/occasion tags
-See wear count for each item
-Edit tags or delete items
-
-### 4. **Get Outfit Recommendations**
-
-Go to "Recommendations"
-Select Season (Spring/Summer/Fall/Winter)
-Select Occasion (Casual/Formal/Party/etc)
-Click "Generate Perfect Outfit"
-System shows 3 items with lowest wear counts
-
-### 5. **Mark Outfit as Worn**
-
-Click "✅ Wear This Outfit!"
-Wear counts increase for all 3 items
-Get new recommendation automatically
+* Saves time picking clothes
+* Improves fashion confidence
+* Promotes sustainable clothing habits
+* Reduces wardrobe clutter
+* Ensures weather-appropriate dressing
+* Digitizes wardrobe for easy access
 
 ---
 
-## 🔧 Key Features Explained
+# 🔮 **FUTURE ENHANCEMENTS**
 
-### **Smart Wear Balancing Algorithm**
-
-System prioritizes less-worn items
-ORDER BY wear_count ASC
-
-Instead of random recommendations, the app suggests the items you wear least frequently, ensuring balanced wardrobe usage.
-
-### **Manual Season/Occasion Editing**
-
-- Click "✏️ Edit" on any wardrobe item
-- Change season or occasion tags
-- System learns from corrections
-- Improves future recommendations
-
-### **Wear Count Tracking**
-
-- Each item displays: "👕 Worn X times"
-- Color-coded badges:
-  - 🔵 **Blue** = Never worn (0 times)
-  - 🟢 **Green** = Well-balanced (1-5 times)
-  - 🟠 **Orange** = Frequently worn (5+ times)
-
-### **Outfit History**
-
-- Complete record of all worn outfits
-- Track what you wore when
-- Statistics dashboard showing patterns
+* Virtual Try-On using GAN
+* Advanced color-matching AI
+* Trend-based outfit suggestions
+* E-commerce integration
+* Auto-generating complete “LookBooks”
+* Mobile app version
 
 ---
 
-## 📊 Database Schema
+# 🧑‍🏫 **TEAM & GUIDE**
 
-### **Tables Created**
+* **Anushka (4MW22CS027)**@
+* **Gowrika (4MW22CS059)**
+* **Krithika (4MW22CS083)**
+* **Prajnashree (4MW22CS113)**
 
-- `users` - User accounts
-- `clothes` - Wardrobe items with wear_count
-- `outfit_history` - Track worn outfits
-- `recommendations` - Saved recommendations
-- `shared_outfits` - Community feature (future)
-- `item_price` - Cost per wear (future)
-- `favorites` - Favorite items (future)
-- `user_stats` - User analytics
-
----
-
-## 🎯 API Endpoints
-
-| Endpoint            | Method | Purpose              |
-| ------------------- | ------ | -------------------- |
-| `/`                 | GET    | Home page            |
-| `/login`            | POST   | User login           |
-| `/register`         | POST   | User registration    |
-| `/logout`           | GET    | User logout          |
-| `/upload`           | POST   | Upload clothing item |
-| `/recommend`        | GET    | Recommendation page  |
-| `/generate_outfit`  | POST   | Generate outfit      |
-| `/mark_outfit_worn` | POST   | Mark outfit as worn  |
-| `/wardrobe`         | GET    | Wardrobe view        |
-| `/update_item`      | POST   | Edit item tags       |
-| `/delete_item`      | POST   | Delete item          |
-| `/wardrobe_stats`   | GET    | Get statistics       |
+**Under Guidance:**
+Mr. Raghavendra  I Hegde
+Sr. Assistant Professor
+Dept. of CSE, SMVITM, Bantakal
 
 ---
 
-## 🤖 ML Model Integration
+# 🙏 **ACKNOWLEDGEMENT**
 
-### **Recognition Module** (`recognition_module.py`)
+We thank our guide and institution for continuous support and encouragement throughout the completion of this major project.
 
-Classifies clothing using pre-trained models
-subtype, info, details = single_classification(image_path)
-
-Returns:
-
-- subtype: 'top' / 'bottom' / 'foot'
-- info: Human-readable description
-- details: [color, pattern, season, occasion, ...]
-
----
-
-## 📱 Responsive Design
-
-- ✅ Works on Desktop (1920px+)
-- ✅ Works on Tablet (768px-1024px)
-- ✅ Works on Mobile (375px-768px)
-- ✅ Beautiful modern UI with gradients
-- ✅ Smooth animations and transitions
-
----
-
-## 🔐 Security Features
-
-- ✅ Password-based authentication
-- ✅ Session management
-- ✅ User data isolation
-- ✅ SQL injection prevention
-- ✅ Secure file handling
-
-⚠️ **Note**: For production, implement:
-
-- Password hashing (bcrypt)
-- JWT tokens
-- HTTPS
-- CORS protection
-
----
-
-## 🚨 Troubleshooting
-
-### **Error: "no such table: outfit_history"**
-
-cd py
-python db_setup.py migrate
-
-text
-
-### **Error: Models not found**
-
-Ensure `.h5` or `.keras` files are in `models/` folder
-
-### **Port already in use**
-
-Change port in app.py:
-app.run(debug=True, port=5001)
-
-text
-
-### **Virtual environment not activating**
-
-Windows (PowerShell issue):
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-Then activate:
-venv\Scripts\Activate.ps1
-
-text
-
----
-
-## 🎨 Customization
-
-### **Change App Colors**
-
-Edit `static/style.css`:
---primary-color: #667eea;
---secondary-color: #764ba2;
-
-text
-
-### **Add New Occasions**
-
-Edit `templates/recommend.html`:
-
-<option value="Your Occasion">🎯 Your Occasion</option> ```
-Modify Wear Badge Thresholds
-Edit templates/wardrobe.html:
-
-text
-{% if item.get('wear_count', 0) > 5%}high{% endif %}
