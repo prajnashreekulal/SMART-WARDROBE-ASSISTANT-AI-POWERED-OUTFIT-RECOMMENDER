@@ -162,6 +162,9 @@ SMART-WARDROBE-ASSISTANT/
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200503" src="https://github.com/user-attachments/assets/a0c18e77-a40a-4411-94e0-3f43c6195a02" />
 
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200517" src="https://github.com/user-attachments/assets/0c52967c-7dff-4450-8132-77ea069231c3" />
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/fe1732fe-53a4-4441-91fc-cc2c103ae7f9" />
+
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/c99fc753-0922-4798-9b9f-6495ab3ece1e" />
 
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200526" src="https://github.com/user-attachments/assets/55de764d-80b6-4019-995a-8fb3be921b85" />
 
