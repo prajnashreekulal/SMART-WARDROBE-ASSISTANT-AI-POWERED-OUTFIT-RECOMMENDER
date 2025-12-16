@@ -155,6 +155,29 @@ SMART-WARDROBE-ASSISTANT/
 
 ---
 
+# Screen shots of Project 
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200450" src="https://github.com/user-attachments/assets/851bd9f3-df0f-4b10-aef4-29c1c142d112" />
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200456" src="https://github.com/user-attachments/assets/9b09db98-e643-4b87-a4ec-9bc96696c0ec" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200503" src="https://github.com/user-attachments/assets/a0c18e77-a40a-4411-94e0-3f43c6195a02" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200517" src="https://github.com/user-attachments/assets/0c52967c-7dff-4450-8132-77ea069231c3" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200526" src="https://github.com/user-attachments/assets/55de764d-80b6-4019-995a-8fb3be921b85" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200540" src="https://github.com/user-attachments/assets/52b02e06-d915-4bf2-8307-05baca7b0c4f" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200554" src="https://github.com/user-attachments/assets/dbe753cf-752e-415e-a45c-c994cadcf4c9" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200602" src="https://github.com/user-attachments/assets/3efbe2ad-1338-4066-b59c-22c345d40faf" />
+
+<img width="1920" height="1140" alt="Screenshot 2025-12-16 200613" src="https://github.com/user-attachments/assets/6a18c5f4-5d7e-4454-b720-b9c5ad5c8264" />
+
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/9a3df81d-a5fb-482f-ab4b-0e7c8c3f4c52" />
+
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/b6413af4-29a3-464c-9869-11fe55ce0541" />
+
+
 # 🚀 **HOW TO RUN THE PROJECT**
 
 ### **1️⃣ Clone Repo**
