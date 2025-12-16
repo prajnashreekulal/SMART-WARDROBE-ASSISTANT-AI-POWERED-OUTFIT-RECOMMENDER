@@ -154,6 +154,8 @@ SMART-WARDROBE-ASSISTANT/
 ```
 
 ---
+ # GOOGLE DRIVE LINK FOR models 
+ https://drive.google.com/drive/folders/17jAt5PtuPtHlpxQy_Icjhz9o82-ytPln?usp=sharing
 
 # Screen shots of Project 
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200450" src="https://github.com/user-attachments/assets/851bd9f3-df0f-4b10-aef4-29c1c142d112" />
