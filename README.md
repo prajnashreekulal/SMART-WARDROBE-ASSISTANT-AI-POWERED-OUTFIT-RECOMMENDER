@@ -158,7 +158,9 @@ SMART-WARDROBE-ASSISTANT/
  https://drive.google.com/drive/folders/17jAt5PtuPtHlpxQy_Icjhz9o82-ytPln?usp=sharing
 
 # Screen shots of Project 
-<img width="1920" height="1140" alt="Screenshot 2025-12-16 200450" src="https://github.com/user-attachments/assets/851bd9f3-df0f-4b10-aef4-29c1c142d112" />
+ # Welcome Image
+<img width="1920" height="1140" alt="image" src="https://github.com/user-attachments/assets/22d6a73f-c54f-45a0-a84f-1ee4edcbed35" />
+
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200456" src="https://github.com/user-attachments/assets/9b09db98-e643-4b87-a4ec-9bc96696c0ec" />
 
 <img width="1920" height="1140" alt="Screenshot 2025-12-16 200503" src="https://github.com/user-attachments/assets/a0c18e77-a40a-4411-94e0-3f43c6195a02" />
