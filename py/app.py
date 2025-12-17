@@ -116,12 +116,19 @@ def get_smart_recommendations_balanced(user_id, season, occasion):
 # ==========================================
 # Routes
 # ==========================================
+@app.route("/welcome")
+def welcome():
+    return render_template("welcome.html")
 
 
 @app.route("/")
 def index():
-    """Home page"""
-    username = session.get("username")
+    return render_template("welcome.html")
+
+@app.route("/dashboard")
+def dashboard():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
     return render_template("index.html", user=session.get("user_id"))
 
 
@@ -142,7 +149,7 @@ def login():
         if user:
             session["user_id"] = user["id"]
             session["username"] = user["username"]
-            return redirect(url_for("index"))
+            return redirect(url_for("dashboard"))
         return render_template("login.html", error="Invalid credentials")
     return render_template("login.html")
 
@@ -165,7 +172,7 @@ def register():
         conn.close()
         session["user_id"] = user_id
         session["username"] = username
-        return redirect(url_for("index"))
+        return redirect(url_for("dashboard"))
     return render_template("register.html")
 
 
@@ -173,7 +180,7 @@ def register():
 def logout():
     """User logout"""
     session.clear()
-    return redirect(url_for("index"))
+    return redirect(url_for("welcome"))
 
 
 # ==========================================
