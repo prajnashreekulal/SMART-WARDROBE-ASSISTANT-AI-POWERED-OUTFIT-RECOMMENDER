@@ -121,6 +121,7 @@ def get_smart_recommendations_balanced(user_id, season, occasion):
 @app.route("/")
 def index():
     """Home page"""
+    username = session.get("username")
     return render_template("index.html", user=session.get("user_id"))
 
 

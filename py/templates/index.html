@@ -1,115 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Wardrobe Assistant</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/weather_styles.css') }}">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Wardrobe Assistant</title>
+
+  <!-- Fonts & icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Your redesigned CSS (replace your current style.css with the CSS below) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Keep your weather script if you have one -->
+  <script defer src="{{ url_for('static', filename='js/weather_recommendation.js') }}"></script>
 </head>
-<body>
+<body class="app-body">
 
-
-<nav>
-  <div>Smart Wardrobe Assistant</div>
-  <div>
-    {% if user %}
-      <a href="{{ url_for('index') }}">Home</a>
-      <a href="{{ url_for('recommend') }}">Recommendations</a>
-      <a href="{{ url_for('wardrobe') }}">My Wardrobe</a>
-      <a href="{{ url_for('logout') }}">Logout</a>
-    {% else %}
-      <a href="{{ url_for('login') }}">Login / Register</a>
-    {% endif %}
-  </div>
-</nav>
-
-
-<div class="container">
-  <h2>👕 Smart Wardrobe Assistant</h2>
-
-  <!-- NEW: Auto Weather-Based Recommendation Section (Only shows when logged in) -->
-  {% if user %}
-  <div class="auto-recommendation-section">
-    <h3>🌤️ Today's Weather-Based Recommendations</h3>
-    
-    <div id="weather-info" class="weather-info-container">
-      <div class="weather-card">
-        <p>Loading weather...</p>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="brand">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="brand-logo" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <div class="brand-title">Smart Wardrobe Assistant</div>
+          <div class="brand-sub">AI-powered outfit planner</div>
+        </div>
       </div>
     </div>
-    
-    <div class="recommendations-container">
-      <h3>Recommended for Today's Weather</h3>
-      <div id="weather-section" class="outfits-grid"></div>
-      
-      <h3>Casual & Sports Outfits</h3>
-      <div id="occasion-section" class="outfits-grid"></div>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      {% if user %}
+        <a href="{{ url_for('index') }}" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="{{ url_for('recommend') }}" class="nav-link"><i class="fa-solid fa-lightbulb"></i> Recommendations</a>
+        <a href="{{ url_for('wardrobe') }}" class="nav-link"><i class="fa-solid fa-shirt"></i> My Wardrobe</a>
+        <a href="{{ url_for('logout') }}" class="nav-link cta"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="nav-link cta"><i class="fa-solid fa-right-to-bracket"></i> Login / Register</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Welcome back{% if user %}, {{ user.name | default('') }}{% endif %} ✨</h1>
+        <p class="hero-sub">Upload your clothing, generate outfits, and get weather-smart recommendations.</p>
+      </div>
+      <!-- <div class="hero-actions"> -->
+        <!-- <button class="btn ghost" onclick="document.getElementById('uploadInput').click();">
+          <i class="fa-solid fa-upload"></i> Upload Item
+        </button> -->
+        <!-- <button class="btn" onclick="generateOutfit()"> -->
+          <!-- <i class="fa-solid fa-magic"></i> Generate Outfit -->
+        </button>
+      </div>
+    </section>
+
+
+     <hr class="divider big">
+
+    <!-- UPLOAD + PREVIEW -->
+    <section class="grid grid-2 upload-section">
+      <div class="card upload-card">
+        <div class="card-header">
+          <h3>📤 Upload New Clothing Item</h3>
+        </div>
+
+        <div class="card-body">
+          <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
+            <label for="uploadInput" class="dropzone" id="dropzone">
+              <input id="uploadInput" type="file" name="file" accept="image/*" required hidden>
+              <div class="drop-inner">
+                <i class="fa-solid fa-cloud-arrow-up fa-2x"></i>
+                <p class="muted">Drag & drop an image here, or click to browse</p>
+                <small class="muted">PNG, JPG, JPEG — max 10MB</small>
+              </div>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Upload</button>
+            </div>
+          </form>
+
+          <div id="uploadResult" class="result-panel visually-hidden" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="card preview-card">
+        <div class="card-header">
+          <h3>Uploaded Item</h3>
+        </div>
+        <div class="card-body" id="previewArea">
+          <div class="placeholder">
+            <i class="fa-solid fa-shirt"></i>
+            <p class="muted">No item uploaded yet</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEATHER + RECOMMENDATIONS (only visible when logged in) -->
+    {% if user %}
+   <section class="weather-recs">
+
+    <!-- WEATHER SECTION -->
+    <div class="card weather-card" id="weather-info">
+        <div class="card-header">
+            <h3>🌤️ Today’s Weather</h3>
+        </div>
+        <div class="card-body weather-body">
+            <div class="loading">Loading weather...</div>
+        </div>
     </div>
-  </div>
 
-  <hr style="margin: 40px 0; border: 1px solid #ddd;">
-  {% endif %}
+    <!-- TWO COLUMN CARD LAYOUT -->
+    <div class="two-col-section">
 
-  <h3>📤 Upload New Clothing Item</h3>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="file" accept="image/*" required />
-    <button type="submit">Upload</button>
-  </form>
+        <!-- LEFT — Recommended Now -->
+        <div class="card recs-card">
+            <div class="card-header">
+                <h3>Recommended Now</h3>
+            </div>
+            <div class="card-body">
+                <div id="weather-section"></div>
+            </div>
+        </div>
 
+        <!-- RIGHT — Occasion-Based Outfits -->
+        <div class="card recs-card">
+            <div class="card-header">
+                <h3>🎯 Occasion-Based Outfits</h3>
+            </div>
+            <div class="card-body">
+                <div id="occasion-section"></div>
+            </div>
+        </div>
 
-  <h3>Uploaded Item</h3>
-  <div id="uploadResult"></div>
+    </div>
 
+</section>
 
-  <div style="text-align:center; margin-top:20px;">
-    <button onclick="generateOutfit()">✨ Generate Outfit</button>
-  </div>
-  <div id="outfit"></div>
-</div>
+    {% endif %}
 
+   
 
-<script src="{{ url_for('static', filename='js/weather_recommendation.js') }}"></script>
+    <!-- OUTFIT DISPLAY -->
+    <section class="card outfit-card" id="outfitCard" style="display:none;">
+      <div class="card-header">
+        <h3>✨ Recommended Outfit</h3>
+      </div>
+      <div class="card-body" id="outfit"></div>
+    </section>
 
-<script>
-document.getElementById("uploadForm").onsubmit = async (e) => {
-  e.preventDefault();
-  let formData = new FormData(e.target);
+    <footer class="app-footer">
+      <small>Built with ❤️ — Smart Wardrobe Assistant</small>
+    </footer>
+  </main>
 
-  let res = await fetch("/upload", { method: "POST", body: formData });
-  let data = await res.json();
+  <!-- JS: upload handling and generateOutfit (keeps same backend routes) -->
+  <script>
+  // --- Drag & drop UX ---
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('uploadInput');
+  const uploadResult = document.getElementById('uploadResult');
+  const previewArea = document.getElementById('previewArea');
 
-  // Show uploaded image + text
-  document.getElementById("uploadResult").innerHTML = `
-    <img src="${data.file_url}" alt="Uploaded Image" style="max-width:150px;border:2px solid #ddd;border-radius:8px;">
-    <p><strong>Subtype:</strong> ${data.subtype}</p>
-    <p><strong>Info:</strong> ${data.info}</p>
-    <p><strong>Season:</strong> ${data.season}</p>
-    <p><strong>Occasion:</strong> ${data.occasion}</p>
-  `;
-};
+  ;['dragenter','dragover','dragleave','drop'].forEach(evt => {
+    dropzone.addEventListener(evt, (e) => {
+      e.preventDefault(); e.stopPropagation();
+    });
+  });
 
+  dropzone.addEventListener('dragover', () => dropzone.classList.add('dragover'));
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+  dropzone.addEventListener('drop', (e) => {
+    dropzone.classList.remove('dragover');
+    const files = e.dataTransfer.files;
+    if(files && files[0]) fileInput.files = files;
+    // show preview
+    showPreview(files[0]);
+  });
 
-async function generateOutfit() {
-  let res = await fetch("/recommend");
-  let data = await res.json();
+  fileInput.addEventListener('change', (e) => {
+    const f = e.target.files[0];
+    if(f) showPreview(f);
+  });
 
-  if(data.error){
-    document.getElementById("outfit").innerHTML = `<p style="color:red;">${data.error}</p>`;
-  } else {
-    document.getElementById("outfit").innerHTML = `
-      <h3>Recommended Outfit</h3>
-      <p>Occasion: ${data.occasion || "N/A"} | Season: ${data.season || "N/A"}</p>
-      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
-        <img src="${data.top}" alt="Top" style="max-width:150px;border:2px solid #ddd;border-radius:8px;">
-        <img src="${data.bottom}" alt="Bottom" style="max-width:150px;border:2px solid #ddd;border-radius:8px;">
-        <img src="${data.shoe}" alt="Shoes" style="max-width:150px;border:2px solid #ddd;border-radius:8px;">
+  function showPreview(file) {
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    previewArea.innerHTML = `
+      <div class="preview-inner">
+        <img src="${url}" alt="preview" class="preview-img"/>
+        <div class="preview-meta">
+          <p class="small"><strong>${file.name}</strong></p>
+          <p class="muted small">${Math.round(file.size/1024)} KB</p>
+        </div>
       </div>
     `;
   }
-}
-</script>
 
+  // --- Upload form submit ---
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fd = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Uploading...';
 
+    try {
+      const res = await fetch('/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+
+      if(data.error){
+        uploadResult.classList.remove('visually-hidden');
+        uploadResult.innerHTML = `<p class="error">${data.error}</p>`;
+      } else {
+        uploadResult.classList.remove('visually-hidden');
+        uploadResult.innerHTML = `
+          <div class="upload-preview-row">
+            <img src="${data.file_url}" alt="uploaded" class="preview-img-large" />
+            <div>
+              <p><strong>Subtype:</strong> ${data.subtype || '—'}</p>
+              <p><strong>Info:</strong> ${data.info || '—'}</p>
+              <p><strong>Season:</strong> ${data.season || '—'}</p>
+              <p><strong>Occasion:</strong> ${data.occasion || '—'}</p>
+            </div>
+          </div>
+        `;
+        // Populate the outfit preview area with the uploaded image (if not already)
+        previewArea.innerHTML = `<div class="preview-inner"><img src="${data.file_url}" alt="uploaded" class="preview-img"/></div>`;
+      }
+    } catch(err) {
+      uploadResult.classList.remove('visually-hidden');
+      uploadResult.innerHTML = `<p class="error">Upload failed. Try again.</p>`;
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Upload';
+    }
+  });
+
+  // --- Generate Outfit (keeps same /recommend API) ---
+  async function generateOutfit(){
+    try {
+      const res = await fetch('/recommend');
+      const data = await res.json();
+
+      const outfitCard = document.getElementById('outfitCard');
+      const outfitDiv = document.getElementById('outfit');
+      outfitCard.style.display = 'block';
+
+      if(data.error){
+        outfitDiv.innerHTML = `<p class="error">${data.error}</p>`;
+        return;
+      }
+
+      // build images (top, bottom, shoe) gracefully
+      const imgs = ['top','bottom','shoe'].map(k => data[k]).filter(Boolean);
+      const imgsHtml = imgs.length ? imgs.map(u => `<img src="${u}" alt="${u}" class="outfit-img">`).join('') : '<p class="muted">No images available</p>';
+
+      outfitDiv.innerHTML = `
+        <div class="outfit-meta">
+          <p><strong>Occasion:</strong> ${data.occasion || 'N/A'}</p>
+          <p><strong>Season:</strong> ${data.season || 'N/A'}</p>
+        </div>
+        <div class="outfit-grid">${imgsHtml}</div>
+      `;
+    } catch(err){
+      console.error(err);
+      document.getElementById('outfit').innerHTML = `<p class="error">Could not fetch recommendations.</p>`;
+    }
+  }
+  </script>
 </body>
 </html>

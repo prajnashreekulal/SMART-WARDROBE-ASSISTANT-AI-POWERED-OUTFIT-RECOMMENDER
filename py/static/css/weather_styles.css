@@ -9,8 +9,8 @@
 }
 
 .weather-info-container {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #203B37 0%, #081B1B 100%);
+    color: #EEE8B2;
     padding: 40px;
     border-radius: 15px;
     margin-bottom: 50px;
