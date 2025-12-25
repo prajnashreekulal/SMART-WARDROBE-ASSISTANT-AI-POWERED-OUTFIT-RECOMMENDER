@@ -40,7 +40,7 @@ This version of the Smart Wardrobe Assistant includes:
 
 ### 🤖 **AI Clothing Classification Using CNN**
 
-* Predicts **top / bottom / footwear / accessory**
+* Predicts **top / bottom / footwear**
 * Predicts **occasion category** (formal / casual / party / ethnic)
 * Predicts **color & pattern**
 * Predicts **subtype** (t-shirt, shirt, kurti, jeans, skirt, shoes, etc.)
